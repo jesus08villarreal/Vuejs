@@ -8,31 +8,33 @@ const respuesta = true;
 const arrayFrutas =[
     {
         name: "manzana",
-        price: "3.00",
+        price: 20,
         description: "una manzana"
     },
     {
         name: "zanahoria",
-        price: "2.00",
+        price: 2,
         description: "una manzana"
     },
     {
         name: "Espiruleta",
-        price: "12.00",
+        price: 12,
         description: "una manzana"
     },
     {
         name: "cebolla",
-        price: "23.00",
+        price: 23,
         description: "una manzana"
     },
     {
         name: "carne",
-        price: "300.00",
+        price: 43,
         description: "una manzana"
     },
+  
     
 ]
+
 
 </script>
 
@@ -44,11 +46,14 @@ const arrayFrutas =[
     <p v-if="!respuesta" :style="incorrecto[0]"> {{ incorrecto[2] }}</p>
     <p v-if="respuesta" :style="correcto[0]"> {{ correcto[2] }}</p>
 
-    <ul>
-       <li type="1" v-for="(fruta) in arrayFrutas" :key="fruta.name">
+    
+       <template type="1"  v-for="(fruta) in arrayFrutas" :key="fruta.name">
+        <li v-if="fruta.price>0">
          -- {{ fruta.name }} -- {{ fruta.price }} -- {{ fruta.description }}
-       </li> 
-    </ul>
+        </li>
+            </template> 
+    <button @click="ButtonXD">Click me</button>
+    <button v-on:click="ButtonXD">Click me</button>
 
 </template>
 <style>
