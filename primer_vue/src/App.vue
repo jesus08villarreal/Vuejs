@@ -16,8 +16,8 @@ const showList = () => {
 }
 
 const favNumber = () => { //array que guarda los numeros agregados a favorios y no deja agregar el mismo numero si ya se agrego una vez.
-    let checker = counter.value
-    if (counter.value==ArrayFavoritos.includes(checker)){ //atorado aqui para revisar si ya se puso 1 vez el numero favorito
+    let checker =ArrayFavoritos.indexOf(counter.value) //Solucionado con indexOf podemos saber si existe un valor dentro de una arreglo, si es que no existe entonces nos regresa -1
+    if (checker!=-1){                                   //Si si existe nos regresa como valor el indice o posicion de donde se encuentra este valor.
         console.log("Ese numero ya esta agregado")
     }else{
         ArrayFavoritos.push(counter.value)
