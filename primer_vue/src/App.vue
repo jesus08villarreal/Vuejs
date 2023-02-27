@@ -4,10 +4,16 @@ import {ref, computed} from 'vue'
 const positivo = ref(true);
 const color = ref("color: green");
 const counter = ref(1);
+let ArrayFavoritos = []
+const buleano = ref(false)
 
-const incrementTW = () => {
+const showList = () => {
+    buleano = true
+}
+
+const favNumber = () => {
     
-    counter.value=counter.value+20
+    ArrayFavoritos.push(counter.value)
 
 }
 
@@ -52,10 +58,16 @@ const classCounter = computed(() => {
     </h2>
             
     <button @click="increment">Incrementar</button>
-    <button @click="incrementTW">Incrementar 20</button>
+    <button @click="favNumber">Agregar a favoritos</button>
     <button @click="decrement">Disminuir</button>
     <button @click="resetNumber">Resetear</button>
+    <button @click="showList">Mostrar Lista</button>
 
+    <template v-if="buleano">
+        hola!
+    </template>
+
+    
 </template>
 <style>
 .positive { 
