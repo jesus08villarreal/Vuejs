@@ -1,4 +1,7 @@
 <script setup>
+import {ref} from 'vue'
+
+
 var name = "Jesus Villarreal";
 const ColorBlue = "color: blue";
 const correcto = ["color: green", "CORRECTO", "respuesta correcta"];
@@ -34,7 +37,13 @@ const arrayFrutas =[
   
     
 ]
+const increment = () => {
+    
+    counter.value++
 
+}
+
+const counter = ref(0);
 
 </script>
 
@@ -52,8 +61,9 @@ const arrayFrutas =[
          -- {{ fruta.name }} -- {{ fruta.price }} -- {{ fruta.description }}
         </li>
             </template> 
-    <button @click="ButtonXD">Click me</button>
-    <button v-on:click="ButtonXD">Click me</button>
+            
+    <button @click="increment">Hol!</button>
+    <h2>{{ counter }}</h2>
 
 </template>
 <style>
