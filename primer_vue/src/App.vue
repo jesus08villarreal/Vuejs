@@ -4,25 +4,34 @@ import {ref, computed} from 'vue'
 const positivo = ref(true);
 const color = ref("color: green");
 const counter = ref(0);
-const ArrayFavoritos = []
+const ArrayFavoritos = ref([])
 let checker1 = ref(false)
 let indice
 const checker2 = ref(false);
+const checker3 = ref(false)
 
 
 const showList = () => {
+    if (ArrayFavoritos.value.length>0){
     checker2.value = true
+    }else{
+        checker3.value = true;
+        console.log("Array vacio")
+    }
 }
 
 const favNumber = () => { //array que guarda los numeros agregados a favorios y no deja agregar el mismo numero si ya se agrego una vez.
-    const checker =ArrayFavoritos.indexOf(counter.value) //Solucionado con indexOf podemos saber si existe un valor dentro de una arreglo, si es que no existe entonces nos regresa -1
-    if (checker!=-1){ 
+    const checker =ArrayFavoritos.value.indexOf(counter.value) //Solucionado con indexOf podemos saber si existe un valor dentro de una arreglo, si es que no existe entonces nos regresa -1
+    if (checker!=-1){
+        
         checker1.value=true                                  //Si si existe nos regresa como valor el indice o posicion de donde se encuentra este valor.
         console.log("Ese numero ya esta agregado")
     }else{
-        ArrayFavoritos.push(counter.value)
+        
+        ArrayFavoritos.value.push(counter.value)
         }
-}
+        checker2.value = false
+    }
 
 const increment = () => {
     checker1.value = false
@@ -69,11 +78,14 @@ const classCounter = computed(() => {
     <button @click="decrement">Disminuir</button>
     <button @click="resetNumber">Resetear</button>
     <button @click="showList">Mostrar Lista</button>
+    <p v-if="checker3">Lista de favoritos vacia.</p>
     <ul v-if="checker2===true">
         <li v-for="(numero,indice) in ArrayFavoritos" :key="numero">
         {{ ArrayFavoritos[indice] }}
         </li>
             </ul>
+            <br>
+    
     
 </template>
 <style>
