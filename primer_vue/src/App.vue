@@ -1,6 +1,7 @@
 <script setup>
 import {ref, computed} from 'vue'
 
+
 const positivo = ref(true);
 const color = ref("color: green");
 const counter = ref(0);
@@ -49,6 +50,7 @@ const resetNumber = () => {
     counter.value = 0;
 
 }
+
 const classCounter = computed(() => {
     if(counter.value>20){
         return 'bigger'
@@ -68,30 +70,36 @@ const classCounter = computed(() => {
 </script>
 
 <template>
+    <div class="container text-center row">
 
-    <h2 :class="classCounter">
-        {{ counter }}
-    </h2>
-            
-    <button @click="increment">Incrementar</button>
-    <button @click="favNumber" :disabled="checker1">Agregar a favoritos</button>
-    <button @click="decrement">Disminuir</button>
-    <button @click="resetNumber">Resetear</button>
-    <button @click="showList">Mostrar Lista</button>
-    <p v-if="checker3">Lista de favoritos vacia.</p>
-    <ul v-if="checker2===true">
-        <li v-for="(numero,indice) in ArrayFavoritos" :key="numero">
-        {{ ArrayFavoritos[indice] }}
-        </li>
-            </ul>
-            <br>
-    
-    
-</template>
+        
+        <h2 :class="classCounter" class="text-center">
+            {{ counter }}
+        </h2>
+        
+        <div class="btn-group-vertical col-sm">
+        <button @click="increment" class="btn btn-success">Incrementar</button>
+        <button @click="decrement" class="btn btn-danger">Disminuir</button>
+        <button @click="favNumber" :disabled="checker1" class="btn btn-primary">Agregar a favoritos</button>
+        <button @click="resetNumber" class="btn btn-light">Resetear</button>
+        <button @click="showList" class="btn btn-info">Mostrar Lista</button>
+        <p v-if="checker3" class="btn btn-secondary">Lista de favoritos vacia.</p> 
+            </div>
+            <div class="container col">
+        
+        <ul v-if="checker2===true" class="list-group">
+            <li v-for="(numero,indice) in ArrayFavoritos" :key="numero" class="list-group-item"> 
+                {{ ArrayFavoritos[indice] }}
+            </li>
+        </ul>
+        </div>
+    </div>
+        
+    </template>
 <style>
 .positive { 
     color: green;
-
+    
 }
 .negative {
     color: blue;
